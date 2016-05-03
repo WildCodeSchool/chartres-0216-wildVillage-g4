@@ -5,3 +5,11 @@ app:
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+user_login:
+    path:     /user/login
+    defaults: { _controller: AppBundle:Registration:register }
+
+user_register:
+    path:     /user/register
+    defaults: { _controller: AppBundle:Registration:register }
