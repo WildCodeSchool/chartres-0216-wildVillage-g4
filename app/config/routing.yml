@@ -13,3 +13,4 @@ user_login:
 user_register:
     path:     /user/register
     defaults: { _controller: AppBundle:Registration:register }
+

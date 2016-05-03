@@ -6,7 +6,7 @@
 
 <div class="col-md-6 col-md-offset-6 register-div">
 	{{ form_start(form, {'method': 'post', 'action': path('user_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-
+		<a href="./login"><p>se connecter</p></a>
 		<div class="col-md-12 ">
 			<div class="col-md-6">
 		    	Nom d'utilisateur :
@@ -16,7 +16,6 @@
 				{{ form_errors(form.username) }}
 		    </div>
 		</div>
-
 		<div class="col-md-12 register-form">
 			<div class="col-md-6">
 		    	Adresse E-mail :
@@ -61,5 +60,6 @@
 	    </div>
 	{{ form_end(form) }}
 </div>
+
 
 {% endblock %}
