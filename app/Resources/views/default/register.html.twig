@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="col-md-6 col-md-offset-6 register-div">
+	{{ form_start(form, {'method': 'post', 'action': path('user_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+		<div class="col-md-12 ">
+			<div class="col-md-6">
+		    	Nom d'utilisateur :
+		    </div>
+			<div class="col-md-6">
+				{{ form_widget(form.username) }}
+				{{ form_errors(form.username) }}
+		    </div>
+		</div>
+		<div class="col-md-12 register-form">
+			<div class="col-md-6">
+		    	Adresse E-mail :
+		    </div>
+			<div class="col-md-6">
+				{{ form_widget(form.email) }}
+				{{ form_errors(form.email) }}
+		    </div>
+		</div>
+
+		<div class="col-md-12 register-form">
+			<div class="col-md-6">
+		    	Âge :
+		    </div>
+			<div class="col-md-6">
+				<input type="number" name="age" />
+		    </div>
+		</div>
+
+		<div class="col-md-12 register-form">
+			<div class="col-md-6">
+		    	Mot de passe :
+		    </div>
+			<div class="col-md-6">
+				{{ form_widget(form.plainPassword.first) }}
+				{{ form_errors(form.plainPassword.first) }}
+		    </div>
+		</div>
+
+		<div class="col-md-12 register-form">
+			<div class="col-md-6">
+		    	Confirmation :
+		    </div>
+			<div class="col-md-6">
+				{{ form_widget(form.plainPassword.second) }}
+				{{ form_errors(form.plainPassword.second) }}
+		    </div>
+		</div>
+
+	    <div class="col-md-12 register-but">
+	        <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}" />
+	    </div>
+	{{ form_end(form) }}
+</div>
+
+
+{% endblock %}
