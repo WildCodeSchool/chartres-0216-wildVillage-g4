@@ -18,19 +18,20 @@
 		</div>
 		<div class="col-md-12 register-form">
 			<div class="col-md-6">
-		    	Age :
-		    </div>
-			<div class="col-md-6">
-				<input name="age">
-		    </div>
-		</div>
-		<div class="col-md-12 register-form">
-			<div class="col-md-6">
 		    	Adresse E-mail :
 		    </div>
 			<div class="col-md-6">
 				{{ form_widget(form.email) }}
 				{{ form_errors(form.email) }}
+		    </div>
+		</div>
+
+		<div class="col-md-12 register-form">
+			<div class="col-md-6">
+		    	Âge :
+		    </div>
+			<div class="col-md-6">
+				<input type="number" name="age" />
 		    </div>
 		</div>
 
@@ -59,5 +60,6 @@
 	    </div>
 	{{ form_end(form) }}
 </div>
+
 
 {% endblock %}
