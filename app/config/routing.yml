@@ -8,7 +8,7 @@ fos_user:
 
 user_login:
     path:     /user/login
-    defaults: { _controller: AppBundle:Registration:register }
+    defaults: { _controller: AppBundle:Security:login }
 
 user_register:
     path:     /user/register
