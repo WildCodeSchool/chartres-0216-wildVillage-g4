@@ -78,7 +78,6 @@ class RegistrationController extends Controller
 
             $em->persist($datauser);
             $em->flush();
-
             return $response;
 
         }

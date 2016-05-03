@@ -31,7 +31,7 @@ class Datauser
     /**
      * @var int
      *
-     * @ORM\Column(name="age", type="integer", nullable=true)
+     * @ORM\Column(name="age", type="integer")
      */
     private $age;
 
