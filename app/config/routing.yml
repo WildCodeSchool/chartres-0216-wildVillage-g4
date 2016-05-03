@@ -10,6 +10,9 @@ user_register:
     path:     /register
     defaults: { _controller: AppBundle:Registration:register }
 
+user_messagerie:
+    path:     /user/messagerie
+    defaults: { _controller: AppBundle:Registration:register }
 
 # app/config/routing.yml
 fos_user:
