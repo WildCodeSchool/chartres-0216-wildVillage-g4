@@ -39,16 +39,18 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $firstname = $request->request->get('firstname');
-        
-        $user = $this->getUser();
-        
-        $repository = $this->getDoctrine()
-            ->getRepository('AppBundle:Datauser');
+
+
+        $user = $this ->getUser();
+
+        $repository = $em->getRepository('AppBundle:Datauser')->findOneById_user($user->getId());
 
         $repository->setFirstname($firstname);
 
         $em->persist($repository);
         $em->flush();
-        return $response;
+        
+        return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        ));
     }
 }
