@@ -21,11 +21,15 @@ class UserController extends Controller
 {
 	public function showProfilAction (Request $request)
     {
-    	$repository = $this->getDoctrine()
-    	 	->getRepository('AppBundle:User');
-    	$user = $repository->findByUsername("toto");
 
-    	var_dump($user);
+    	$userid = $this->getUser()->getId();
+
+    	$repository = $this->getDoctrine()
+    	  	->getRepository('AppBundle:Datauser');
+    	$datauser = $repository->findOneById_user($userid);
+
+    	var_dump($datauser);
+    	// echo "MAIL= ".$user->getSalt();
 
         return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
     	));
