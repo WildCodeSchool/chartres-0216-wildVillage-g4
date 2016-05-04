@@ -37,12 +37,14 @@ class UserController extends Controller
     }
     public function modifyAction (Request $request)
     {
-        $user = $this ->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $firstname = $request->request->get('firstname');
+        
+        $user = $this->getUser();
+        
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Datauser');
-        $em = $this->getDoctrine()->getManager();
 
-        $firstname = $request->request->get('firstname');
         $repository->setFirstname($firstname);
 
         $em->persist($repository);
