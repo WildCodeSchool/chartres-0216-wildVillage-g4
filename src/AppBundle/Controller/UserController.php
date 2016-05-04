@@ -39,12 +39,14 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $firstname = $request->request->get('firstname');
+        $surname = $request->request->get('surname');
 
         $user = $this ->getUser();
 
         $repository = $em->getRepository('AppBundle:Datauser')->findOneById_user($user->getId());
 
         $repository->setFirstname($firstname);
+        $repository->setSurname($surname);
 
         $em->persist($repository);
         $em->flush();
