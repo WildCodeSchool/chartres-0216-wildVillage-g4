@@ -19,19 +19,21 @@ use AppBundle\Entity\Link;
 
 class UserController extends Controller
 {
-	public function showProfilAction (Request $request)
+    public function showProfilAction (Request $request)
     {
-
-    	$userid = $this->getUser()->getId();
-
-    	$repository = $this->getDoctrine()
-    	  	->getRepository('AppBundle:Datauser');
-    	$datauser = $repository->findOneById_user($userid);
-
-    	var_dump($datauser);
-    	// echo "MAIL= ".$user->getSalt();
-
+        $user = $this -> getUser();
+        $userid = $user -> getId();
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Datauser');
+        $datauser = $repository->findOneById_user($userid);
+        echo "<br/> Username ";
+        echo $user->getUsername();
+        echo "<br/> Email ";
+        echo $user->getEmail();
+        echo "<br/> Age ";
+        echo $datauser->getAge();
+        var_dump($user);
         return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-    	));
+        ));
     }
 }
