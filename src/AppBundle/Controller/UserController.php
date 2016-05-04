@@ -32,8 +32,21 @@ class UserController extends Controller
         echo $user->getEmail();
         echo "<br/> Age ";
         echo $datauser->getAge();
-        var_dump($user);
         return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
+    }
+    public function modifyAction (Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $firstname = $request->request->get('firstname');
+
+        $datauser = new Datauser();
+        $datauser->setIduser($user->getId());
+        $datauser->setFirstname($firstname);
+
+        $em->persist($datauser);
+        $em->flush();
+        return $response;
     }
 }
