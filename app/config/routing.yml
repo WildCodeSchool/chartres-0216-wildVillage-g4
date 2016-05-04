@@ -16,7 +16,7 @@ user_messagerie:
 
 user_profil:
     path:     /user/profil
-    defaults: { _controller: AppBundle:Registration:register }    
+    defaults: { _controller: AppBundle:User:showProfil }    
 
 user_accueil:
     path:     /user/accueil
