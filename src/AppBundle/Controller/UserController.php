@@ -41,6 +41,7 @@ class UserController extends Controller
         $firstname = $request->request->get('firstname');
         $surname = $request->request->get('surname');
 
+
         $user = $this ->getUser();
 
         $repository = $em->getRepository('AppBundle:Datauser')->findOneById_user($user->getId());
