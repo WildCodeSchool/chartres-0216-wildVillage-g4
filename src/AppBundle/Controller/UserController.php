@@ -61,8 +61,23 @@ class UserController extends Controller
         $user = $this -> getUser();
         $userid = $user -> getId();
         $repository = $this->getDoctrine()
-            ->getRepository('AppBundle:Datauser');
-        $datauser = $repository->findOneById_user($userid);
+            ->getRepository('AppBundle:Post');
+        $posts = $repository->findById_user($userid);
+
+        // Pour chaque message
+        foreach ($posts as $post) {
+	        echo "<br/><br/> Date: ";
+	        // echo $post->getDate();
+	        echo "<br/> idMsg: ";
+	        echo $post->getId();
+	        echo "<br/> idUser: ";
+	        echo $post->getIdUser();
+	        echo "<br/> Message: ";
+	        echo $post->getContent();
+        }
+		return $this->render('default/profil.html.twig', array(
+			'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        ));		
     }
     
     public function sendPostAction (Request $request)
@@ -79,7 +94,8 @@ class UserController extends Controller
 
 		$em->persist($objpost);
 		$em->flush();
-		return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+		return $this->render('default/profil.html.twig', array(
+			'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));		
     }
 }

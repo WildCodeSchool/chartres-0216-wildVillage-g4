@@ -10,12 +10,12 @@ user_register:
     path:     /register
     defaults: { _controller: AppBundle:Registration:register }
 
-user_messagerie:
-    path:     /user/messagerie
-    defaults: { _controller: AppBundle:User:register }
+user_posts:
+    path:     /user/posts
+    defaults: { _controller: AppBundle:User:showPosts }
 
-user_message_check:
-    path:     /user/messagerie_check
+user_post_check:
+    path:     /user/post_check
     defaults: {_controller: AppBundle:User:sendPost }
 
 user_profil:
