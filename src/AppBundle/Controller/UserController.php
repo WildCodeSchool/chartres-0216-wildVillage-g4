@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use AppBundle\Entity\Datauser;
+use AppBundle\Entity\Post;
 use AppBundle\Entity\User;
-use AppBundle\Entity\Link;
+use DateTime;
     /**
      * @Route("/", name="profil")
      */
@@ -54,5 +54,32 @@ class UserController extends Controller
         
         return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
+    }
+
+    public function showPostsAction (Request $request)
+    {
+        $user = $this -> getUser();
+        $userid = $user -> getId();
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Datauser');
+        $datauser = $repository->findOneById_user($userid);
+    }
+    
+    public function sendPostAction (Request $request)
+    {
+		$em = $this->getDoctrine()->getManager();
+		$msg = $request->request->get('msg');
+		$user = $this->getUser();
+
+		$objpost = new Post();
+		$objpost->setIdUser($user->getId());
+		$objpost->setContent($msg);
+		$objpost->setDate(new DateTime());
+		$objpost->setIspublic(true);
+
+		$em->persist($objpost);
+		$em->flush();
+		return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        ));		
     }
 }

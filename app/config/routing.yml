@@ -12,7 +12,11 @@ user_register:
 
 user_messagerie:
     path:     /user/messagerie
-    defaults: { _controller: AppBundle:Registration:register }
+    defaults: { _controller: AppBundle:User:register }
+
+user_message_check:
+    path:     /user/messagerie_check
+    defaults: {_controller: AppBundle:User:sendPost }
 
 user_profil:
     path:     /user/profil
@@ -21,9 +25,11 @@ user_profil:
 user_accueil:
     path:     /user/accueil
     defaults: { _controller: AppBundle:Registration:register }
+
 profil_check:
     path:     /user/profil_check
     defaults: {_controller: AppBundle:User:modify }
+
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
