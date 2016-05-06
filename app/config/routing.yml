@@ -12,7 +12,11 @@ user_register:
 
 user_messagerie:
     path:     /user/messagerie
-    defaults: { _controller: AppBundle:Registration:register }
+    defaults: { _controller: AppBundle:User:messagerie }
+
+message_check:
+    path:     /user/message_check
+    defaults: {_controller: AppBundle:User:sendmsg}
 
 user_profil:
     path:     /user/profil

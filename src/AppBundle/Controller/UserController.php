@@ -13,6 +13,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Entity\Datauser;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Link;
+use AppBundle\Entity\Message;
+use DateTime;
     /**
      * @Route("/", name="profil")
      */
@@ -54,5 +56,41 @@ class UserController extends Controller
         
         return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
+    }
+    public function messagerieAction (Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $receive = $request->request->get('receive');
+        $content = $request->request->get('content');
+        $user = $this -> getUser();
+        
+        $idreceive = $user ->getId();
+        $message = $em->getRepository('AppBundle:Message')->findOneById_send($user->getId());
+
+        echo $user->getUsername();
+
+
+        return $this -> render('default/messagerie.html.twig');
+    }
+    public function sendmsgAction (Request $request)
+    {   
+        $em = $this->getDoctrine()->getManager();
+        $user = $this -> getUser();
+        
+        $receive = $request->request->get('receive');
+        $content = $request->request->get('content');
+
+        $idreceive = $user ->getId();
+
+        $message = new Message();
+        $message->setIdSend($user->getId());
+        $message->setIdReceive($idreceive);
+        $message->setContent($content);
+        $message->setDate(new DateTime());
+
+        
+        $em->persist($message);
+        $em->flush();
+        return $this -> render('default/messagerie.html.twig');
     }
 }
