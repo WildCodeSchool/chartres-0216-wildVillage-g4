@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<form action="{{ path("message_check") }}" method="post">
+		<div>
+		   	Destinataire :
+			<input type="string" name="receive" />
+		</div>
+	    <div>
+		   	Texte :
+			<textarea name="content">
+				
+			</textarea>
+		</div>
+		<div class="col-md-12 register-but">
+	        <input class="btn btn-success" type="submit" value="{{ 'Valider'|trans }}" />
+	    </div>
+	</form>
+{% endblock %}
