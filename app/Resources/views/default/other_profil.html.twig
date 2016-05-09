@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{{ user.username }}
+	<br/>
+	{%if profil.mailIspublic==true %} {{ user.email }} {%else%}Adresse Email non renseignée{%endif%}
+	<br/>
+	{%if profil.firstnameIspublic==true %} {{datauser.firstname}} {%else%} Prénom non renseigné{%endif%}
+	<br/>
+	{%if profil.surnameIspublic==true %} {{ datauser.surname }} {%else%} Nom non renseigné{%endif%}
+	<br/>
+	{%if profil.ageIspublic==true %} {{ datauser.age }} {%else%} Age non renseigné{%endif%}
+	<br/>
+{% endblock %}
