@@ -40,6 +40,7 @@ class UserController extends Controller
         echo $datauser->getAge();
         
         return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        
         ));
     }
     public function modifyAction (Request $request)
@@ -97,6 +98,7 @@ class UserController extends Controller
 
         $em->persist($repository);
         $em->flush();
+
         $em->persist($profil);
         $em->flush();
         return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
