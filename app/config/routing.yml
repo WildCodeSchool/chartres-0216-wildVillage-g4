@@ -41,6 +41,7 @@ profil_check:
 other_profil:
     path: /user/profil/{id}
     defaults: {_controller: AppBundle:User:other_profil}
+    
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

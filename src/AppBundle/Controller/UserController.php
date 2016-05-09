@@ -168,19 +168,20 @@ class UserController extends Controller
 
         $messages_recus = [];
         foreach ($messages as $message) {
-            $msg_recu = [];
 
-            $sender = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByid($message->getidSend());
+        	$msg_recu = [];
+        	
+        	$sender = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByid($message->getidSend());
+        	
+	    	$msg_recu[] = array(
+	    		'id' => $message->getId(),
+	    		'idsent' => $message->getIdSenD(),
+	    		'content' => $message->getContent(),
+	    		'date' => $message->getDate(),
+	    		'sender_username' => $sender->getUsername(),
+	    	);
 
-            $msg_recu[] = array(
-                'id' => $message->getId(),
-                'idsent' => $message->getIdSenD(),
-                'content' => $message->getContent(),
-                'date' => $message->getDate(),
-                'sender_username' => $sender->getUsername(),
-            );
-
-               array_push($messages_recus, $msg_recu);
+       		array_push($messages_recus, $msg_recu);
 
         }
         // $sent_messages = $repository->findByidSend($user->getId());
@@ -218,12 +219,12 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $user = $em->getRepository('AppBundle:User')->findOneById($id);
-        $repository = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
+        $datauser = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
         $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($id);
 
         return $this->render('default/other_profil.html.twig', array(
             'user'=>$user,
-            'datauser'=>$repository,
+            'datauser'=>$datauser,
             'profil'=>$profil,
         ));
     }
