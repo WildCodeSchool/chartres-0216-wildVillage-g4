@@ -4,7 +4,7 @@
 		<div class="col-md-6 col-md-offset-3">
 			<h2>Messages reçus</h2>
 			{% for msg in messages %}
-				{{ dump(msg) }}
+				{{ msg[0]['id'] }}
 				<div class="row">
 					<div class="col-md-2">{{ msg.idSend }}</div>
 					<div class="col-md-10 text-right">{{ msg.date.date }}</div>
