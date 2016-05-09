@@ -23,24 +23,18 @@ class UserController extends Controller
 {
     public function showProfilAction (Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $user = $this -> getUser();
         $userid = $user -> getId();
+
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Datauser');
         $datauser = $repository->findOneById_user($userid);
-        echo "<br/> Username ";
-        echo $user->getUsername();
-        echo "<br/>";
-        echo $datauser->getFirstname();
-        echo "<br/>";
-        echo $datauser->getSurname();
-        echo "<br/> Email ";
-        echo $user->getEmail();
-        echo "<br/> Age ";
-        echo $datauser->getAge();
-        
-        return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        
+        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($user->getId());
+        return $this->render('default/profil.html.twig', array(
+            'user'=>$user,
+            'datauser'=>$datauser,
+            'profil'=>$profil,
         ));
     }
     public function modifyAction (Request $request)
@@ -56,6 +50,8 @@ class UserController extends Controller
         $ageispublic = $request->request->get('ageispublic');
         $surnameispublic = $request->request->get('surnameispublic');
         $firstnameispublic = $request->request->get('firstnameispublic');
+        $username = $request->request->get('username');
+        $bio = $request->request->get('bio');
         
         //appel des tables
         $user = $this ->getUser();
@@ -63,13 +59,16 @@ class UserController extends Controller
         $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($user->getId());
 
         //change les checkbox en booléens
-        $ageispublic = !empty($ageispublic) ? true : false ; 
-        $surnameispublic = !empty($surnameispublic) ? true : false ; 
         $firstnameispublic = !empty($firstnameispublic) ? true : false ; 
+        $surnameispublic = !empty($surnameispublic) ? true : false ; 
         $mailispublic = !empty($mailispublic) ? true : false ; 
-        
+        $ageispublic = !empty($ageispublic) ? true : false ; 
 
         //verifie si les cases sont remplies pour modifier les infos
+        if(!empty($username))
+        {
+            $user->setUsername($username);
+        }
         if(!empty($firstname))
         {
             $repository->setFirstname($firstname);
@@ -86,11 +85,18 @@ class UserController extends Controller
         {        
             $repository->setAge($age);
         }
-
+        if ($profil==null)
+        {
+            $profil = new Profil_user();
+            $profil -> setBio("");
+        }
+        if(!empty($bio))
+        {
+            $profil->setBio($bio);
+        }
         //remplit la table Profil_user
         $profil->setIdUser($user->getId());
         $profil->setBioIspublic(true);
-        $profil->setBio("coucou");
         $profil->setMailIspublic($mailispublic);
         $profil->setAgeIspublic($ageispublic);
         $profil->setSurnameIspublic($surnameispublic);
@@ -101,7 +107,10 @@ class UserController extends Controller
 
         $em->persist($profil);
         $em->flush();
-        return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        return $this->render('default/profil.html.twig', array(
+            'user'=>$user,
+            'datauser'=>$repository,
+            'profil'=>$profil,
         ));
     }
 
