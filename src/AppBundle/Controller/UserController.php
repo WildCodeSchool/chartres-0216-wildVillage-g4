@@ -164,10 +164,10 @@ class UserController extends Controller
             ->getRepository('AppBundle:Message');
 
 
-        $messages = $repository->findByidReceive($user->getId());
+        $messages_recus = $repository->findByidReceive($user->getId());
 
-        $messages_recus = [];
-        foreach ($messages as $message) {
+        $tab_messages_recus = [];
+        foreach ($messages_recus as $message) {
 
         	$msg_recu = [];
         	
@@ -181,15 +181,39 @@ class UserController extends Controller
 	    		'sender_username' => $sender->getUsername(),
 	    	);
 
-       		array_push($messages_recus, $msg_recu);
-
+       		array_push($tab_messages_recus, $msg_recu);
+       		$message = '';
         }
+
+
+
+        $messages_envoyes = $repository->findByidSend($user->getId());
+
+        $tab_messages_envoyes = [];
+        foreach ($messages_envoyes as $message) {
+
+        	$msg_envoye = [];
+        	
+        	$receiver = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByid($message->getIdReceive());
+        	
+	    	$msg_envoye[] = array(
+	    		'id' => $message->getId(),
+	    		'idsend' => $message->getIdSend(),
+	    		'content' => $message->getContent(),
+	    		'date' => $message->getDate(),
+	    		'receiver_username' => $receiver->getUsername(),
+	    	);
+
+       		array_push($tab_messages_envoyes, $msg_envoye);
+       		$message ='';
+
+        }        
         // $sent_messages = $repository->findByidSend($user->getId());
 
         return $this -> render('default/messagerie.html.twig', array(
-            'user'             => $user,
-            'messages'        => $messages_recus,
-            // 'sent_messages'    => $sent_messages,
+            'user'             	=> $user,
+            'messages_recus'    => $tab_messages_recus,
+            'messages_envoyes'  => $tab_messages_envoyes,
         ));
     }
 
@@ -201,18 +225,18 @@ class UserController extends Controller
         $receive = $request->request->get('receive');
         $content = $request->request->get('content');
 
-        $idreceive = $user ->getId();
+        // $idreceive = $user ->getId();
 
         $message = new Message();
         $message->setIdSend($user->getId());
-        $message->setIdReceive($idreceive);
+        $message->setIdReceive($receive);
         $message->setContent($content);
         $message->setDate(new DateTime());
 
         
         $em->persist($message);
         $em->flush();
-        return $this -> render('default/messagerie.html.twig');
+        return $this -> render('default/messagerie_check.html.twig');
     }
     public function other_profilAction (Request $request, $id)
     {
