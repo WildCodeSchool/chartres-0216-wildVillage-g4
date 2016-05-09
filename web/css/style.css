@@ -6,36 +6,39 @@ body
 
 .top {
 	background-color: #e67e22;
-	margin-top: 
+	margin-top: -22px;
  
 }
 
 .top h3 {
 	margin-left: 45%;
-	margin-top: 50px;
 	margin-bottom: 25px;
 }
 
 h1 { 
- 
+ font-family: "Courier New", Courier, "Liberation Mono", monospace;
+font-family: Monaco, "DejaVu Sans Mono", "Lucida Console", "Andale Mono", monospace;
  text-align: center; 
 }
 
-.cerf_index {
-	margin-left: 40%;
+
+.cerf_index img {
+	width: 780px;
+    padding-left: 35%;
+
 }
 
 .top img {
 	width: 50px;
 	margin-left: 40%;
-	margin-bottom: -150px;
+	margin-bottom: -90px;
 }
 
 /*login_______________*/
 
 .login {
 
-	background-color: #ffa700;
+	/*background-color: #ffa700;*/
 	margin-top: 150px;
 }
 .btn-style{
@@ -53,12 +56,16 @@ h1 {
 	background : -ms-linear-gradient(top, #ffd500 0%, #ff8c00 100%);
 	background : linear-gradient(top, #ffd500 0%, #ff8c00 100%);
 	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd500', endColorstr='#ff8c00',GradientType=0 );
-
+    
 }
+.wcs img {
 
+width: 50%;
+margin-left: 25%;
+}
 /*register*/
 
-.register-div img {
+.img img{
 
 width: 50%;
 
