@@ -13,6 +13,7 @@ use AppBundle\Entity\Post;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Link;
 use AppBundle\Entity\Message;
+use AppBundle\Entity\Profil_user;
 use DateTime;
     /**
      * @Route("/", name="profil")
@@ -22,38 +23,94 @@ class UserController extends Controller
 {
     public function showProfilAction (Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $user = $this -> getUser();
         $userid = $user -> getId();
+
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Datauser');
         $datauser = $repository->findOneById_user($userid);
-        echo "<br/> Username ";
-        echo $user->getUsername();
-        echo "<br/> Email ";
-        echo $user->getEmail();
-        echo "<br/> Age ";
-        echo $datauser->getAge();
-        return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($user->getId());
+        return $this->render('default/profil.html.twig', array(
+            'user'=>$user,
+            'datauser'=>$datauser,
+            'profil'=>$profil,
         ));
     }
     public function modifyAction (Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        
+        //declaration des variables
         $firstname = $request->request->get('firstname');
         $surname = $request->request->get('surname');
-
-
+        $age = $request->request->get('age');
+        $email = $request->request->get('email');
+        $mailispublic= $request->request->get('mailispublic');
+        $ageispublic = $request->request->get('ageispublic');
+        $surnameispublic = $request->request->get('surnameispublic');
+        $firstnameispublic = $request->request->get('firstnameispublic');
+        $username = $request->request->get('username');
+        $bio = $request->request->get('bio');
+        
+        //appel des tables
         $user = $this ->getUser();
-
         $repository = $em->getRepository('AppBundle:Datauser')->findOneById_user($user->getId());
+        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($user->getId());
 
-        $repository->setFirstname($firstname);
-        $repository->setSurname($surname);
+        //change les checkbox en booléens
+        $firstnameispublic = !empty($firstnameispublic) ? true : false ; 
+        $surnameispublic = !empty($surnameispublic) ? true : false ; 
+        $mailispublic = !empty($mailispublic) ? true : false ; 
+        $ageispublic = !empty($ageispublic) ? true : false ; 
+
+        //verifie si les cases sont remplies pour modifier les infos
+        if(!empty($username))
+        {
+            $user->setUsername($username);
+        }
+        if(!empty($firstname))
+        {
+            $repository->setFirstname($firstname);
+        }
+        if(!empty($surname))
+        {
+            $repository->setSurname($surname);
+        }
+        if(!empty($email))
+        {
+            $user->setEmail($email);
+        }
+        if(!empty($age))
+        {        
+            $repository->setAge($age);
+        }
+        if ($profil==null)
+        {
+            $profil = new Profil_user();
+            $profil -> setBio("");
+        }
+        if(!empty($bio))
+        {
+            $profil->setBio($bio);
+        }
+        //remplit la table Profil_user
+        $profil->setIdUser($user->getId());
+        $profil->setBioIspublic(true);
+        $profil->setMailIspublic($mailispublic);
+        $profil->setAgeIspublic($ageispublic);
+        $profil->setSurnameIspublic($surnameispublic);
+        $profil->setFirstnameIspublic($firstnameispublic);
 
         $em->persist($repository);
         $em->flush();
-        
-        return $this->render('default/profil.html.twig', array('base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+
+        $em->persist($profil);
+        $em->flush();
+        return $this->render('default/profil.html.twig', array(
+            'user'=>$user,
+            'datauser'=>$repository,
+            'profil'=>$profil,
         ));
     }
 
@@ -136,5 +193,19 @@ class UserController extends Controller
         $em->persist($message);
         $em->flush();
         return $this -> render('default/messagerie.html.twig');
+    }
+    public function other_profilAction (Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $user = $em->getRepository('AppBundle:User')->findOneById($id);
+        $repository = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
+        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($id);
+
+        return $this->render('default/other_profil.html.twig', array(
+            'user'=>$user,
+            'datauser'=>$repository,
+            'profil'=>$profil,
+        ));
     }
 }
