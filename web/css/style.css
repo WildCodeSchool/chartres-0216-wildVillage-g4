@@ -7,7 +7,7 @@
 }
 
 .top h3 {
-	text-align: center;
+	margin-left: 45%;
 	margin-top: 50px;
 	margin-bottom: 25px;
 }
@@ -18,12 +18,13 @@ h1 {
 }
 
 .cerf_index {
-	margin-left: 490px;
+	margin-left: 40%;
 }
 
 .top img {
 	width: 50px;
-	margin-left: 500px;
+	margin-left: 40%;
+	margin-bottom: -150px;
 }
 
 /*login_______________*/
