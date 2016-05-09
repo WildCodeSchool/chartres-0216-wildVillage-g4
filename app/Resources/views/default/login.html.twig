@@ -14,11 +14,14 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<p><a href="./">accueil</a></p>
+			
 			</div>
 		</div>
 		<div class="row login">
-			<div class="col-md-12 ">
+			<div class="col-md-12 wcs">
+					<a href="./">
+          				<img src="{{ asset('img/WCS.png') }}"/>
+		     			</a>
 				<form action="{{ path("fos_user_security_check") }}" method="post">
 
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />

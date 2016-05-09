@@ -28,7 +28,7 @@ message_check:
 
 user_profil:
     path:     /user/profil
-    defaults: { _controller: AppBundle:User:showProfil }    
+    defaults: { _controller: AppBundle:User:showProfil }
 
 user_accueil:
     path:     /user/accueil
@@ -38,6 +38,9 @@ profil_check:
     path:     /user/profil_check
     defaults: {_controller: AppBundle:User:modify }
 
+other_profil:
+    path: /user/profil/{id}
+    defaults: {_controller: AppBundle:User:other_profil}
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
