@@ -174,7 +174,7 @@ class UserController extends Controller
         	
 	    	$msg_recu[] = array(
 	    		'id' => $message->getId(),
-	    		'idsent' => $message->getIdSenD(),
+	    		'idsend' => $message->getIdSend(),
 	    		'content' => $message->getContent(),
 	    		'date' => $message->getDate(),
 	    		'sender_username' => $sender->getUsername(),

@@ -6,11 +6,11 @@
 			{% for msg in messages %}
 				{{ msg[0]['id'] }}
 				<div class="row">
-					<div class="col-md-2">{{ msg.idSend }}</div>
-					<div class="col-md-10 text-right">{{ msg.date.date }}</div>
+					<div class="col-md-2">{{ msg[0]['sender_username'] }}</div>
+					<div class="col-md-10 text-right">{{ msg[0]['date'].date }}</div>
 					<div class="row">
 						<p class="col-md-12">
-							{{ msg.content }}
+							{{ msg[0]['content'] }}
 						</p>
 					</div>
 				</div>
