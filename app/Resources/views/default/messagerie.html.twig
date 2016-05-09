@@ -1,40 +1,40 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<h2>Messages reçus</h2>
-			{% for msg in messages %}
-				{{ dump(msg) }}
-				<div class="row">
-					<div class="col-md-2">{{ msg.idSend }}</div>
-					<div class="col-md-10 text-right">{{ msg.date.date }}</div>
-					<div class="row">
-						<p class="col-md-12">
-							{{ msg.content }}
-						</p>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Messages reçus</h2>
+            {% for msg in messages %}
+				{{ msg[0]['id'] }}
+                <div class="row">
+                    <div class="col-md-2">{{ msg.idSend }}</div>
+                    <div class="col-md-10 text-right">{{ msg.date.date }}</div>
+                    <div class="row">
+                        <p class="col-md-12">
+                            {{ msg.content }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<form action="{{ path("message_check") }}" method="post">
-				<div>
-				   	Destinataire :
-					<input type="string" name="receive" />
-				</div>
-			    <div>
-				   	Texte :
-					<textarea name="content">
-						
-					</textarea>
-				</div>
-				<div class="col-md-12 register-but">
-			        <input class="btn btn-success" type="submit" value="{{ 'Valider'|trans }}" />
-			    </div>
-			</form>
-		</div>
-	</div>			
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="{{ path("message_check") }}" method="post">
+                <div>
+                       Destinataire :
+                    <input type="string" name="receive" />
+                </div>
+                <div>
+                       Texte :
+                    <textarea name="content">
+
+                    </textarea>
+                </div>
+                <div class="col-md-12 register-but">
+                    <input class="btn btn-success" type="submit" value="{{ 'Valider'|trans }}" />
+                </div>
+            </form>
+        </div>
+    </div>            
 {% endblock %}

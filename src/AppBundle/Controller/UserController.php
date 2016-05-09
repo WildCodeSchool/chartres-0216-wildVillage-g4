@@ -157,39 +157,38 @@ class UserController extends Controller
         ));		
 	}
     
-    public function messagerieAction (Request $request)
+  public function messagerieAction (Request $request)
     {
         $user = $this -> getUser();
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Message');
 
-        
+
         $messages = $repository->findByidReceive($user->getId());
-        
+
         $messages_recus = [];
         foreach ($messages as $message) {
-        	$msg_recu = [];
-        	
-        	$sender = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByid($message->getidSend());
-        	
-	    	$msg_recu[] = array(
-	    		'id' => $message->getId(),
-	    		'idsent' => $message->getIdSenD(),
-	    		'content' => $message->getContent(),
-	    		'date' => $message->getDate(),
-	    		'sender_username' => $sender->getUsername(),
-	    	);
+            $msg_recu = [];
 
-       		array_push($messages_recus, $msg_recu);
-       		var_dump($messages_recus);
+            $sender = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByid($message->getidSend());
+
+            $msg_recu[] = array(
+                'id' => $message->getId(),
+                'idsent' => $message->getIdSenD(),
+                'content' => $message->getContent(),
+                'date' => $message->getDate(),
+                'sender_username' => $sender->getUsername(),
+            );
+
+               array_push($messages_recus, $msg_recu);
 
         }
         // $sent_messages = $repository->findByidSend($user->getId());
 
         return $this -> render('default/messagerie.html.twig', array(
-        	'user'	 		=> $user,
-        	'messages'		=> $messages_recus,
-        	// 'sent_messages'	=> $sent_messages,
+            'user'             => $user,
+            'messages'        => $messages_recus,
+            // 'sent_messages'    => $sent_messages,
         ));
     }
 
