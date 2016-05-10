@@ -110,11 +110,16 @@ class UserController extends Controller
 
         $em->persist($profil);
         $em->flush();
-        return $this->render('default/profil.html.twig', array(
-            'user'=>$user,
-            'datauser'=>$repository,
-            'profil'=>$profil,
-        ));
+        // return $this->render('default/profil.html.twig', array(
+        //     'user'=>$user,
+        //     'datauser'=>$repository,
+        //     'profil'=>$profil,
+        // ));
+        
+        $url = $this -> generateUrl('user_profil');
+        $response = new RedirectResponse($url);
+        return $response;
+
     }
 
     public function showPostsAction (Request $request)
