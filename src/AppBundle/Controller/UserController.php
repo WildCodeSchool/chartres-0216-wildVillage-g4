@@ -142,6 +142,29 @@ class UserController extends Controller
 
 /*********** POST *******************/
 
+    public function showAllPostsAction (Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+        $user = $this->getUser();
+
+        foreach ($posts as $post)
+        {
+            $idAuteur = $em -> getRepository('AppBundle:User')->findOneById($post->getIdUser());
+            $tab[]= array(
+                    'auteur'=>$idAuteur->getUsername(),
+                    'date'=>$post->getDate(),
+                    'content'=>$post->getContent(),
+                );
+        }
+        var_dump($tab);
+        return $this -> render('default/accueil.html.twig', array(
+            'user' => $user,
+            'posts' => $posts,
+            'tabpost'=>$tab,
+        ));
+    }
+
     public function showPostsAction (Request $request)
     {
         $user = $this -> getUser();

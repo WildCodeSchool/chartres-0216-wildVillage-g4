@@ -26,10 +26,10 @@ profil_check:
 # ==== Post ====
 user_accueil:
     path:     /user/accueil
-    defaults: { _controller: AppBundle:Registration:register }
+    defaults: { _controller: AppBundle:User:showAllPosts }
 
 user_posts:
-    path:     /user/posts
+    path:     /user/post
     defaults: { _controller: AppBundle:User:showPosts }
 
 user_post_check:
