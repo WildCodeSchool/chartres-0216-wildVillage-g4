@@ -70,3 +70,16 @@ margin-left: 25%;
 width: 50%;
 
 }
+
+.game{
+
+	background-color: #ffa700;
+	width: 50%;
+}
+.message {
+	background-color: #ee7600;
+}
+.register-but {
+	background-color: orange;
+	width: 100%
+}

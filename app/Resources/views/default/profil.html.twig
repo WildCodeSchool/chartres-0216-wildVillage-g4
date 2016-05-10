@@ -12,7 +12,10 @@
 	{{ datauser.age }}
 	<br/>
 	<br/>
-	<form action="{{ path("profil_check") }}" method="post">
+		<div class="row">
+			<div class="col-lg-12 game">
+      <form action="{{ path("profil_check") }}" method="post">
+	
 		<div>
 		   	<label for="firstname">Prénom :</label>
 			<input type="string" name="firstname" id="firstname"/>
@@ -49,18 +52,26 @@
 	</form>
 	<form action="{{ path("user_post_check") }}" method="post">
 		<div class="row">
-			<div class="col-md-3 col-md-offset-3 text-right">
+			<div class="message">
+            <div class="col-md-3 col-md-offset-3 text-right">
 				<label for="msg">Post</label>
 			</div>
 			<div class="col-md-3">
 				<textarea name="msg" placeholder="Votre message..."></textarea>
 			</div>
-		</div>
+		
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-right">
-	        	<input class="btn btn-success" type="submit" value="{{ 'Valider'|trans }}" />
+	        	<input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
 			</div>
+			</div>
+			
+		</div>
+	</div>
+	 
+	</form>
 		</div>
 
-	</form>
+
+	</div>
 {% endblock %}
