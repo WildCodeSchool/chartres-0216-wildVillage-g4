@@ -31,6 +31,9 @@ class UserController extends Controller
             ->getRepository('AppBundle:Datauser');
         $datauser = $repository->findOneById_user($userid);
         $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($user->getId());
+
+        var_dump($profil);
+        
         return $this->render('default/profil.html.twig', array(
             'user'=>$user,
             'datauser'=>$datauser,
@@ -236,7 +239,11 @@ class UserController extends Controller
         
         $em->persist($message);
         $em->flush();
-        return $this -> render('default/messagerie_check.html.twig');
+        
+        // return $this -> render('default/messagerie_check.html.twig');
+        $url = $this -> generateUrl('user_messagerie');
+        $response = new RedirectResponse($url);
+        return $response;
     }
     public function other_profilAction (Request $request, $id)
     {
