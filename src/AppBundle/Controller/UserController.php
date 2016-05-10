@@ -42,7 +42,23 @@ class UserController extends Controller
             'profil'=>$profil,
         ));
     }
-    public function modifyAction (Request $request)
+    
+    public function showOtherProfilAction (Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $user = $em->getRepository('AppBundle:User')->findOneById($id);
+        $datauser = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
+        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($id);
+
+        return $this->render('default/other_profil.html.twig', array(
+            'user'=>$user,
+            'datauser'=>$datauser,
+            'profil'=>$profil,
+        ));
+    }
+    
+    public function modifyProfilAction (Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -124,20 +140,6 @@ class UserController extends Controller
 
     }
 
-    public function other_profilAction (Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $user = $em->getRepository('AppBundle:User')->findOneById($id);
-        $datauser = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
-        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($id);
-
-        return $this->render('default/other_profil.html.twig', array(
-            'user'=>$user,
-            'datauser'=>$datauser,
-            'profil'=>$profil,
-        ));
-    }
 
 
 /*********** POST *******************/

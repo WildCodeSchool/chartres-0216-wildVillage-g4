@@ -10,6 +10,24 @@ user_register:
     path:     /register
     defaults: { _controller: AppBundle:Registration:register }
 
+# ==== Profil ====
+user_profil:
+    path:     /user/profil
+    defaults: { _controller: AppBundle:User:showProfil }
+
+other_profil:
+    path:     /user/profil/{id}
+    defaults: {_controller: AppBundle:User:showOtherProfil}
+
+profil_check:
+    path:     /user/profil_check
+    defaults: {_controller: AppBundle:User:modifyProfil }
+    
+# ==== Post ====
+user_accueil:
+    path:     /user/accueil
+    defaults: { _controller: AppBundle:Registration:register }
+
 user_posts:
     path:     /user/posts
     defaults: { _controller: AppBundle:User:showPosts }
@@ -18,6 +36,7 @@ user_post_check:
     path:     /user/post_check
     defaults: {_controller: AppBundle:User:sendPost }
 
+# ==== Messagerie ====
 user_messagerie:
     path:     /user/messagerie
     defaults: { _controller: AppBundle:User:messagerie }
@@ -26,22 +45,6 @@ message_check:
     path:     /user/messagerie_check
     defaults: {_controller: AppBundle:User:sendmsg}
 
-user_profil:
-    path:     /user/profil
-    defaults: { _controller: AppBundle:User:showProfil }
-
-user_accueil:
-    path:     /user/accueil
-    defaults: { _controller: AppBundle:Registration:register }
-
-profil_check:
-    path:     /user/profil_check
-    defaults: {_controller: AppBundle:User:modify }
-
-other_profil:
-    path: /user/profil/{id}
-    defaults: {_controller: AppBundle:User:other_profil}
-    
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
