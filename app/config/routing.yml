@@ -45,6 +45,10 @@ message_check:
     path:     /user/messagerie/send
     defaults: {_controller: AppBundle:User:sendMessage}
 
+message_delete:
+    path:     /user/messagerie/delete/{id}
+    defaults: {_controller: AppBundle:User:deleteMessage}
+
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

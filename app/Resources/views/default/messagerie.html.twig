@@ -8,9 +8,10 @@
             <div class="row">
         		<div class="col-md-12 message">
 					<div class="row">
-					    <div class="col-md-4">Message #{{ msg[0]['id'] }}</div>
-					    <div class="col-md-4">Expéditeur: <a href="{{ path("other_profil", {'id': msg[0]['idsend']}) }}">{{ msg[0]['sender_username'] }}</a></div>
-					    <div class="col-md-4 text-right">{{ msg[0]['date'].date }}</div>
+					    <div class="col-md-3">Message #{{ msg[0]['id'] }}</div>
+					    <div class="col-md-3">Expéditeur: <a href="{{ path("other_profil", {'id': msg[0]['idsend']}) }}">{{ msg[0]['sender_username'] }}</a></div>
+					    <div class="col-md-3 text-right">{{ msg[0]['date'].date }}</div>
+					    <div class="col-md-3 text-right"><a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">Supprimer</a></div>
 					</div>
 					<div class="row">
 					    <p class="col-md-12">
@@ -30,9 +31,10 @@
             
             {% for msg in messages_envoyes %}
 			<div class="row">
-			    <div class="col-md-4">Message #{{ msg[0]['id'] }}</div>
-			    <div class="col-md-4">Destinataire: <a href="{{ path("other_profil", {'id': msg[0]['idreceive']}) }}">{{ msg[0]['receiver_username'] }}</a></div>
-			    <div class="col-md-4 text-right">{{ msg[0]['date'].date }}</div>
+			    <div class="col-md-3">Message #{{ msg[0]['id'] }}</div>
+			    <div class="col-md-3">Destinataire: <a href="{{ path("other_profil", {'id': msg[0]['idreceive']}) }}">{{ msg[0]['receiver_username'] }}</a></div>
+			    <div class="col-md-3 text-right">{{ msg[0]['date'].date }}</div>
+				<div class="col-md-3 text-right"><a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">Supprimer</a></div>
 			</div>
 			<div class="row">
 			    <p class="col-md-12">

@@ -298,6 +298,19 @@ class UserController extends Controller
         $response = new RedirectResponse($url);
         return $response;
     }
-  
+
+    public function deleteMessageAction ($id)
+    {   
+        $em = $this->getDoctrine()->getManager();
+        
+        $message= $em->getRepository('AppBundle:Message')->findOneById($id);
+   
+        $em->remove($message);
+        $em->flush();
+        
+        $url = $this -> generateUrl('user_messagerie');
+        $response = new RedirectResponse($url);
+        return $response;
+    }
     
 }
