@@ -12,6 +12,10 @@ font-weight: bold;
 padding: 20px;
 }
 
+header img {
+	width: 15%;
+	margin-left: -75%;
+}
 .top {
 	background-color: #e67e22;
 	margin-top: -22px;

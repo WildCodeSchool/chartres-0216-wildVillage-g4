@@ -165,48 +165,51 @@ class UserController extends Controller
             'tabpost'=>$tab,
         ));
     }
+    
 
     public function showPostsAction (Request $request)
     {
         $user = $this -> getUser();
-        $userid = $user -> getId();
-        $repository = $this->getDoctrine()
-            ->getRepository('AppBundle:Post');
-        $posts = $repository->findById_user($userid);
-
-        // Pour chaque message
-        foreach ($posts as $post) {
-	        echo "<br/><br/> Date: ";
-	        // echo $post->getDate();
-	        echo "<br/> idMsg: ";
-	        echo $post->getId();
-	        echo "<br/> idUser: ";
-	        echo $post->getIdUser();
-	        echo "<br/> Message: ";
-	        echo $post->getContent();
+        $userid = $user->getId();
+        $username = $user -> getUsername();
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findById_user($userid);
+        
+        foreach ($posts as $post)
+        {
+            $tab[]= array(
+                    'idpost'=>$post->getId(),
+                    'date'=>$post->getDate(),
+                    'content'=>$post->getContent(),
+                );
         }
-		return $this->render('default/profil.html.twig', array(
-			'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        return $this->render('default/post.html.twig', array(
+			'user'=> $user,
+            'post'=>$posts,
+            'tabpost'=>$tab,
         ));		
     }
     
     public function sendPostAction (Request $request)
     {
-		$em = $this->getDoctrine()->getManager();
-		$msg = $request->request->get('msg');
-		$user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $user = $this -> getUser();
+        $userid = $user->getId();
+        $username = $user -> getUsername();
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findById_user($userid);
+        $content = $request->request->get('content');
 
-		$objpost = new Post();
-		$objpost->setIdUser($user->getId());
-		$objpost->setContent($msg);
-		$objpost->setDate(new DateTime());
-		$objpost->setIspublic(true);
+        $post = new Post();
+        $post->setIdUser($userid);
+        $post->setContent($content);
+        $post->setDate(new DateTime());
+        $post->setIspublic(1);
 
-		$em->persist($objpost);
+		$em->persist($post);
 		$em->flush();
-		return $this->render('default/profil.html.twig', array(
-			'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));		
+		
+        $url = $this -> generateUrl('user_posts');
+        $response = new RedirectResponse($url);
+        return $response;
 	}
     
 /*********** MESSAGERIE *******************/

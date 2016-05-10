@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<h2>Créer un post</h2>
+	<form action="{{ path("user_post_check") }}" method="post">
+		<div>
+			Texte :
+			<textarea name="content"></textarea>
+		</div>
+		<div class="col-md-12 register-but">
+			<input class="btn btn-success" type="submit" value="{{ 'Poster'|trans }}" />
+		</div>
+	</form>
+	<h2><br/>Posts Envoyés</h2> 
+	{% for onePost in tabpost %}
+		<div class="row">
+			<div class="col-md-4">
+				{{ onePost['idpost'] }}
+			</div>
+			<div class="col-md-4">
+				{{ onePost['date'].date }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{{ onePost['content'] }}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
