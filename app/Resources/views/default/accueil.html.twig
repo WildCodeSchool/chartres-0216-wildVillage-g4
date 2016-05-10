@@ -6,7 +6,7 @@
 				{{ onePost['idpost'] }}
 			</div>
 			<div class="col-md-4">
-				{{ onePost['auteur'] }}
+				<a href="{{ path("other_profil", {'id':onePost['iduser']}) }}">{{ onePost['auteur'] }}</a>
 			</div>
 			<div class="col-md-4">
 				{{ onePost['date'].date }}
