@@ -62,7 +62,7 @@ class RegistrationController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('homepage');
+                $url = $this->generateUrl('user_accueil');
                 $response = new RedirectResponse($url);
             }
 
