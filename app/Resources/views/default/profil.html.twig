@@ -14,62 +14,61 @@
 	<br/>
 		<div class="row">
 			<div class="col-lg-12 game">
-      <form action="{{ path("profil_check") }}" method="post">
-	
-		<div>
-		   	<label for="firstname">Prénom :</label>
-			<input type="string" name="firstname" id="firstname"/>
-			<label for="firstnameispublic">Rendre public</label>
-			<input type="checkbox" { {%if profil.firstnameIspublic==true %} checked {%endif%}} name="firstnameispublic" id="firstnameispublic"/>
-		</div>
-	    <div>
-		   	<label for="surname">Nom :</label>
-			<input type="string" name="surname" id="surname"/>
-			<label for="surnameispublic">Rendre public</label>
-			<input type="checkbox" { {%if profil.surnameIspublic==true %} checked {%endif%}} name="surnameispublic" id="surnameispublic"/>
-		</div>
-		<div>
-		   	<label for="email">Email :</label>
-			<input type="string" name="email" id="email"/>
-			<label for="mailispublic">Rendre public</label>
-			<input type="checkbox" { {%if profil.mailIspublic==true %} checked {%endif%}} name="mailispublic" id="mailispublic"/>
-		</div>
-		 <div>
-		   	<label for="age">Age :</label>
-			<input type="string" name="age" id="age"/>
-			<label for="ageispublic">Rendre public</label>
-			<input type="checkbox" { {%if profil.ageIspublic==true %} checked {%endif%}} name="ageispublic" id="ageispublic"/>
-		</div>
-		<div>
-		   	<label for="bio">Votre biographie :</label>
-			<textarea name="bio" placeholder="décrivez votre parcours" id="bio"></textarea>
-			<label for="bioispublic">Rendre public</label>
-			<input type="checkbox" { {%if profil.bioIspublic==true %} checked {%endif%}} name="bioispublic" id="bioispublic"/>
-		</div>
-		<div class="col-md-12 register-but">
-	        <input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
-	    </div>
-	</form>
-	<form action="{{ path("user_post_check") }}" method="post">
-		<div class="row">
-			<div class="message">
-            <div class="col-md-3 col-md-offset-3 text-right">
-				<label for="msg">Post</label>
-			</div>
-			<div class="col-md-3">
-				<textarea name="msg" placeholder="Votre message..."></textarea>
-			</div>
-		
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 text-right">
-	        	<input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
-			</div>
-			</div>
+		      <form action="{{ path("profil_check") }}" method="post">
 			
-		</div>
-	</div>
-	 
-	</form>
+				<div>
+				   	<label for="firstname">Prénom :</label>
+					<input type="string" name="firstname" id="firstname"/>
+					<label for="firstnameispublic">Rendre public</label>
+					<input type="checkbox" { {%if profil.firstnameIspublic==true %} checked {%endif%}} name="firstnameispublic" id="firstnameispublic"/>
+				</div>
+			    <div>
+				   	<label for="surname">Nom :</label>
+					<input type="string" name="surname" id="surname"/>
+					<label for="surnameispublic">Rendre public</label>
+					<input type="checkbox" { {%if profil.surnameIspublic==true %} checked {%endif%}} name="surnameispublic" id="surnameispublic"/>
+				</div>
+				<div>
+				   	<label for="email">Email :</label>
+					<input type="string" name="email" id="email"/>
+					<label for="mailispublic">Rendre public</label>
+					<input type="checkbox" { {%if profil.mailIspublic==true %} checked {%endif%}} name="mailispublic" id="mailispublic"/>
+				</div>
+				 <div>
+				   	<label for="age">Age :</label>
+					<input type="string" name="age" id="age"/>
+					<label for="ageispublic">Rendre public</label>
+					<input type="checkbox" { {%if profil.ageIspublic==true %} checked {%endif%}} name="ageispublic" id="ageispublic"/>
+				</div>
+				<div>
+				   	<label for="bio">Votre biographie :</label>
+					<textarea name="bio" placeholder="décrivez votre parcours" id="bio"></textarea>
+					<label for="bioispublic">Rendre public</label>
+					<input type="checkbox" { {%if profil.bioIspublic==true %} checked {%endif%}} name="bioispublic" id="bioispublic"/>
+				</div>
+				<div class="col-md-12 register-but">
+			        <input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
+			    </div>
+			</form>
+			<form action="{{ path("user_post_check") }}" method="post">
+				<div class="row">
+					<div class="message">
+			            <div class="col-md-3 col-md-offset-3 text-right">
+							<label for="msg">Post</label>
+						</div>
+						<div class="col-md-3">
+							<textarea name="msg" placeholder="Votre message..."></textarea>
+						</div>
+				
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-right">
+			        		<input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
+						</div>
+					</div>
+					
+					</div>
+				</div>
+			</form>
 		</div>
 
 
