@@ -208,7 +208,7 @@ class UserController extends Controller
 	}
     
 /*********** MESSAGERIE *******************/
-  public function showMessagesAction (Request $request)
+	public function showMessagesAction (Request $request)
     {
         $user = $this -> getUser();
         $repository = $this->getDoctrine()
@@ -249,7 +249,7 @@ class UserController extends Controller
         	
 	    	$msg_envoye[] = array(
 	    		'id' => $message->getId(),
-	    		'idsend' => $message->getIdSend(),
+	    		'idreceive' => $message->getIdReceive(),
 	    		'content' => $message->getContent(),
 	    		'date' => $message->getDate(),
 	    		'receiver_username' => $receiver->getUsername(),
