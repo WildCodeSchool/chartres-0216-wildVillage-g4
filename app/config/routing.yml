@@ -22,14 +22,14 @@ other_profil:
 profil_check:
     path:     /user/profil_check
     defaults: {_controller: AppBundle:User:modifyProfil }
-    
+
 # ==== Post ====
 user_accueil:
     path:     /user/accueil
-    defaults: { _controller: AppBundle:User:showPosts }
+    defaults: { _controller: AppBundle:User:showAllPosts }
 
 user_posts:
-    path:     /user/posts
+    path:     /user/post
     defaults: { _controller: AppBundle:User:showPosts }
 
 user_post_check:
