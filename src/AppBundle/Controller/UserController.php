@@ -151,6 +151,7 @@ class UserController extends Controller
         $posts = $repository->findById_user($userid);
 
         // Pour chaque message
+}
         foreach ($posts as $post) {
 	        echo "<br/><br/> Date: ";
 	        // echo $post->getDate();
@@ -271,6 +272,6 @@ class UserController extends Controller
         $response = new RedirectResponse($url);
         return $response;
     }
-
+  
     
 }

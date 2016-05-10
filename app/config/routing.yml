@@ -22,7 +22,7 @@ other_profil:
 profil_check:
     path:     /user/profil_check
     defaults: {_controller: AppBundle:User:modifyProfil }
-    
+
 # ==== Post ====
 user_accueil:
     path:     /user/accueil
