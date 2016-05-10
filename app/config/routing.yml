@@ -39,11 +39,11 @@ user_post_check:
 # ==== Messagerie ====
 user_messagerie:
     path:     /user/messagerie
-    defaults: { _controller: AppBundle:User:messagerie }
+    defaults: { _controller: AppBundle:User:showMessages }
 
 message_check:
-    path:     /user/messagerie_check
-    defaults: {_controller: AppBundle:User:sendmsg}
+    path:     /user/messagerie/send
+    defaults: {_controller: AppBundle:User:sendMessage}
 
 # app/config/routing.yml
 fos_user:
