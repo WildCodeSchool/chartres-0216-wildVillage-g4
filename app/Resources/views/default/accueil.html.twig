@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 	{% for onePost in tabpost %}
-		<div class="col-md-6">
-			{{ onePost['auteur'] }}
+		<div class="row">
+			<div class="col-md-4">
+				{{ onePost['idpost'] }}
+			</div>
+			<div class="col-md-4">
+				{{ onePost['auteur'] }}
+			</div>
+			<div class="col-md-4">
+				{{ onePost['date'].date }}
+			</div>
 		</div>
-		<div class="col-md-6">
-			{{ onePost['date'].date }}
-		</div>
-		<div class="col-md-12">
-			{{ onePost['content'] }}
+		<div class="row">
+			<div class="col-md-12">
+				{{ onePost['content'] }}
+			</div>
 		</div>
 	{% endfor %}
 {% endblock %}
