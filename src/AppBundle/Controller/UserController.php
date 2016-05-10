@@ -188,7 +188,7 @@ class UserController extends Controller
 	}
     
 /*********** MESSAGERIE *******************/
-  public function messagerieAction (Request $request)
+  public function showMessagesAction (Request $request)
     {
         $user = $this -> getUser();
         $repository = $this->getDoctrine()
@@ -248,7 +248,7 @@ class UserController extends Controller
         ));
     }
 
-    public function sendmsgAction (Request $request)
+    public function sendMessageAction (Request $request)
     {   
         $em = $this->getDoctrine()->getManager();
         $user = $this -> getUser();
