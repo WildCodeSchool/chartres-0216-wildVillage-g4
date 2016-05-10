@@ -86,6 +86,7 @@ width: 50%;
 }
 .message {
 	background-color: #ee7600;
+	width:100%;
 }
 .register-but {
 	background-color: orange;
