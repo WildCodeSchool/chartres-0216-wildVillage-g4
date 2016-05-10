@@ -5,15 +5,19 @@
             <h2>Messages reçus</h2>
             
             {% for msg in messages_recus %}
-			<div class="row">
-			    <div class="col-md-4">Message #{{ msg[0]['id'] }}</div>
-			    <div class="col-md-4"><a href="{{ path("other_profil", {'id': msg[0]['idsend']}) }}">{{ msg[0]['sender_username'] }}</a></div>
-			    <div class="col-md-4 text-right">{{ msg[0]['date'].date }}</div>
-			</div>
-			<div class="row">
-			    <p class="col-md-12">
-			        {{ msg[0]['content'] }}
-			    </p>
+            <div class="row">
+        		<div class="col-md-12 message">
+					<div class="row">
+					    <div class="col-md-4">Message #{{ msg[0]['id'] }}</div>
+					    <div class="col-md-4">Expéditeur: <a href="{{ path("other_profil", {'id': msg[0]['idsend']}) }}">{{ msg[0]['sender_username'] }}</a></div>
+					    <div class="col-md-4 text-right">{{ msg[0]['date'].date }}</div>
+					</div>
+					<div class="row">
+					    <p class="col-md-12">
+					        {{ msg[0]['content'] }}
+					    </p>
+					</div>
+				</div>
 			</div>
             {% endfor %}
 
@@ -26,8 +30,8 @@
             
             {% for msg in messages_envoyes %}
 			<div class="row">
-			    <div class="col-md-4">{{ msg[0]['id'] }}</div>
-			    <div class="col-md-4"><a href="{{ path("other_profil", {'id': msg[0]['idreceive']}) }}">{{ msg[0]['receiver_username'] }}</a></div>
+			    <div class="col-md-4">Message #{{ msg[0]['id'] }}</div>
+			    <div class="col-md-4">Destinataire: <a href="{{ path("other_profil", {'id': msg[0]['idreceive']}) }}">{{ msg[0]['receiver_username'] }}</a></div>
 			    <div class="col-md-4 text-right">{{ msg[0]['date'].date }}</div>
 			</div>
 			<div class="row">
@@ -50,8 +54,8 @@
                        Texte :
                     <textarea name="content"></textarea>
                 </div>
-                <div class="col-md-12 register-but">
-                    <input class="btn btn-success" type="submit" value="{{ 'Valider'|trans }}" />
+                <div class="col-md-12">
+                    <input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
                 </div>
             </form>
         </div>

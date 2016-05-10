@@ -165,6 +165,7 @@ class UserController extends Controller
             'tabpost'=>$tab,
         ));
     }
+    
 
     public function showPostsAction (Request $request)
     {
@@ -280,11 +281,14 @@ class UserController extends Controller
         $receive = $request->request->get('receive');
         $content = $request->request->get('content');
 
+
+        $objReceive = $em->getRepository('AppBundle:User')->findOneByUsername($receive);
+        $idReceive = $objReceive->getId();
         // $idreceive = $user ->getId();
 
         $message = new Message();
         $message->setIdSend($user->getId());
-        $message->setIdReceive($receive);
+        $message->setIdReceive($idReceive);
         $message->setContent($content);
         $message->setDate(new DateTime());
 
