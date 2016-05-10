@@ -1,3 +1,6 @@
-	{% extends 'base.html.twig' %}
-	{% block body %}
-		{% endblock %}
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% for onePost in tab %}
+		{{ onePost[0]['auteur'] }}
+	{% endfor %}
+{% endblock %}

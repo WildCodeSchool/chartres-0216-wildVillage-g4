@@ -157,7 +157,6 @@ class UserController extends Controller
                     'content'=>$post->getContent(),
                 );
         }
-        var_dump($tab);
         return $this -> render('default/accueil.html.twig', array(
             'user' => $user,
             'posts' => $posts,
@@ -174,7 +173,6 @@ class UserController extends Controller
         $posts = $repository->findById_user($userid);
 
         // Pour chaque message
-}
         foreach ($posts as $post) {
 	        echo "<br/><br/> Date: ";
 	        // echo $post->getDate();
