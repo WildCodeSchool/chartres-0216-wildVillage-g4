@@ -21,6 +21,8 @@ use DateTime;
 
 class UserController extends Controller
 {
+    
+/*********** PROFIL *******************/
     public function showProfilAction (Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -115,12 +117,30 @@ class UserController extends Controller
         //     'datauser'=>$repository,
         //     'profil'=>$profil,
         // ));
-        
+
         $url = $this -> generateUrl('user_profil');
         $response = new RedirectResponse($url);
         return $response;
 
     }
+
+    public function other_profilAction (Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $user = $em->getRepository('AppBundle:User')->findOneById($id);
+        $datauser = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
+        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($id);
+
+        return $this->render('default/other_profil.html.twig', array(
+            'user'=>$user,
+            'datauser'=>$datauser,
+            'profil'=>$profil,
+        ));
+    }
+
+
+/*********** POST *******************/
 
     public function showPostsAction (Request $request)
     {
@@ -165,6 +185,7 @@ class UserController extends Controller
         ));		
 	}
     
+/*********** MESSAGERIE *******************/
   public function messagerieAction (Request $request)
     {
         $user = $this -> getUser();
@@ -250,18 +271,6 @@ class UserController extends Controller
         $response = new RedirectResponse($url);
         return $response;
     }
-    public function other_profilAction (Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $user = $em->getRepository('AppBundle:User')->findOneById($id);
-        $datauser = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
-        $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($id);
 
-        return $this->render('default/other_profil.html.twig', array(
-            'user'=>$user,
-            'datauser'=>$datauser,
-            'profil'=>$profil,
-        ));
-    }
+    
 }
