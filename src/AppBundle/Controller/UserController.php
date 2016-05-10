@@ -152,6 +152,7 @@ class UserController extends Controller
         {
             $idAuteur = $em -> getRepository('AppBundle:User')->findOneById($post->getIdUser());
             $tab[]= array(
+                    'idpost'=>$post->getId(),
                     'auteur'=>$idAuteur->getUsername(),
                     'date'=>$post->getDate(),
                     'content'=>$post->getContent(),
