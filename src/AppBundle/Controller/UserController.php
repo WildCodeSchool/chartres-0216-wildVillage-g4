@@ -157,20 +157,64 @@ class UserController extends Controller
         ));		
 	}
     
-    public function messagerieAction (Request $request)
+  public function messagerieAction (Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $receive = $request->request->get('receive');
-        $content = $request->request->get('content');
         $user = $this -> getUser();
-        
-        $idreceive = $user ->getId();
-        $message = $em->getRepository('AppBundle:Message')->findOneById_send($user->getId());
-
-        echo $user->getUsername();
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Message');
 
 
-        return $this -> render('default/messagerie.html.twig');
+        $messages_recus = $repository->findByidReceive($user->getId());
+
+        $tab_messages_recus = [];
+        foreach ($messages_recus as $message) {
+
+        	$msg_recu = [];
+        	
+        	$sender = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByid($message->getidSend());
+        	
+	    	$msg_recu[] = array(
+	    		'id' => $message->getId(),
+	    		'idsend' => $message->getIdSend(),
+	    		'content' => $message->getContent(),
+	    		'date' => $message->getDate(),
+	    		'sender_username' => $sender->getUsername(),
+	    	);
+
+       		array_push($tab_messages_recus, $msg_recu);
+       		$message = '';
+        }
+
+
+
+        $messages_envoyes = $repository->findByidSend($user->getId());
+
+        $tab_messages_envoyes = [];
+        foreach ($messages_envoyes as $message) {
+
+        	$msg_envoye = [];
+        	
+        	$receiver = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByid($message->getIdReceive());
+        	
+	    	$msg_envoye[] = array(
+	    		'id' => $message->getId(),
+	    		'idsend' => $message->getIdSend(),
+	    		'content' => $message->getContent(),
+	    		'date' => $message->getDate(),
+	    		'receiver_username' => $receiver->getUsername(),
+	    	);
+
+       		array_push($tab_messages_envoyes, $msg_envoye);
+       		$message ='';
+
+        }        
+        // $sent_messages = $repository->findByidSend($user->getId());
+
+        return $this -> render('default/messagerie.html.twig', array(
+            'user'             	=> $user,
+            'messages_recus'    => $tab_messages_recus,
+            'messages_envoyes'  => $tab_messages_envoyes,
+        ));
     }
 
     public function sendmsgAction (Request $request)
@@ -181,30 +225,30 @@ class UserController extends Controller
         $receive = $request->request->get('receive');
         $content = $request->request->get('content');
 
-        $idreceive = $user ->getId();
+        // $idreceive = $user ->getId();
 
         $message = new Message();
         $message->setIdSend($user->getId());
-        $message->setIdReceive($idreceive);
+        $message->setIdReceive($receive);
         $message->setContent($content);
         $message->setDate(new DateTime());
 
         
         $em->persist($message);
         $em->flush();
-        return $this -> render('default/messagerie.html.twig');
+        return $this -> render('default/messagerie_check.html.twig');
     }
     public function other_profilAction (Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         
         $user = $em->getRepository('AppBundle:User')->findOneById($id);
-        $repository = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
+        $datauser = $em->getRepository('AppBundle:Datauser')->findOneById_user($id);
         $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($id);
 
         return $this->render('default/other_profil.html.twig', array(
             'user'=>$user,
-            'datauser'=>$repository,
+            'datauser'=>$datauser,
             'profil'=>$profil,
         ));
     }
