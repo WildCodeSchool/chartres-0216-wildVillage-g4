@@ -59,7 +59,7 @@ body {
 /*=====================================*/
 .wcs img {
 width: 50%;
-margin-left: 25%;
+margin: 0 auto;
 }
 
 .btn-register
@@ -147,10 +147,21 @@ margin-left: 20%;
 	background-color: #66CCCC;
 	width: 50%;
 	margin-left: 25%;
+	text-align: left;
 }
 
 
 .register-but {
 	/*background-color: orange;*/
 	width: 100%
+}
+
+.identite {
+	font-size: 150%;
+	
+}
+
+.email {
+	margin-left: 50%;
+	
 }
