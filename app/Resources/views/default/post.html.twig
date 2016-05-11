@@ -1,39 +1,46 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	<h2>Créer un post</h2>
-	<form action="{{ path("user_post_check") }}" method="post">
-		<div>
-			Texte :
-			<textarea name="content"></textarea>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 post-liste">
+			<h2>Créer un post</h2>
+			<form action="{{ path("user_post_check") }}" method="post" class="form-post">
+				<div>
+					Ecrivez votre post:
+					<textarea name="content" class="input-text"></textarea>
+				</div>
+				<div class="col-md-12 btn-post">
+					<input class=" btn btn-info" type="submit" value="{{ 'Poster'|trans }}" />
+				</div>
+			</form>
 		</div>
-		<div class="col-md-12">
-			<input class="btn-style" type="submit" value="{{ 'Poster'|trans }}" />
-		</div>
-	</form>
-		<div class="row post-liste">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
-			<h2><br/>Posts Envoyés</h2> 
-			{% for onePost in tabpost %}
-				<div class="accueil-post">
-					<div class="row post-infos">
-						<div class="col-md-1">
-							{{ onePost['idpost'] }}
-						</div>
-						<div class="col-md-8">
-						</div>
-						<div class="col-md-3">
-							{{ onePost['date'].date }}
-						</div>
+		<div class="col-md-4"></div>
+	</div>
+	<div class="trait"></div>
+	<div class="row post-liste">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+		<h2><br/>Posts Envoyés</h2> 
+		{% for onePost in tabpost %}
+			<div class="accueil-post">
+				<div class="row post-infos infos-post">
+					<div class="col-md-1">
+						{{ onePost['idpost'] }}
 					</div>
-					<div class="row post-content">
-						<div class="col-md-12">
-							{{ onePost['content'] }}
-						</div>
+					<div class="col-md-8">
+					</div>
+					<div class="col-md-3">
+						{{ onePost['date'].date }}
 					</div>
 				</div>
-			{% endfor %}
+				<div class="row post-content">
+					<div class="col-md-12">
+						{{ onePost['content'] }}
+					</div>
+				</div>
 			</div>
-			<div class="col-md-3"></div>
+		{% endfor %}
 		</div>
+		<div class="col-md-3"></div>
+	</div>
 {% endblock %}
