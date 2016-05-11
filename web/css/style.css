@@ -77,6 +77,12 @@ margin-left: 25%;
 {
 	margin-top: 5px;
 }
+.trait
+{
+	margin-top: 30px;
+	height: 5px;
+	background-color: #66CCCC;
+}
 /*==========register=============*/
 
 .img img{
@@ -109,8 +115,6 @@ margin-left: 20%;
 	background-color: #65AED6;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-	margin-left:0px !important;
-	margin-right:0px !important;
 }
 .post-content
 {
@@ -122,9 +126,26 @@ margin-left: 20%;
 .post-liste h2
 {
 	text-align: center;
+	line-height: 10px;
 }
-
-
+.form-post
+{
+	margin:0 auto;
+}
+.input-text
+{
+	min-width: 100%;
+	min-height: 100px;
+}
+.btn-post
+{
+	margin-left: 80%;
+}
+.infos-post
+{
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
 /*===========profil=============*/
 
 .formulaire{
