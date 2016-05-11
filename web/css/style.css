@@ -148,13 +148,18 @@ margin-left: 20%;
 /*===========profil=============*/
 
 .formulaire{
-
+    margin-top: 100px;
 	background-color: #66CCCC;
 	width: 50%;
 	margin-left: 25%;
 	text-align: left;
 }
-
+.prof {
+	background-color: #66CCCC;
+	width: 50%;
+	margin-left: 25%;
+	text-align: left;
+}
 
 .register-but {
 	/*background-color: orange;*/
@@ -167,9 +172,22 @@ margin-left: 20%;
 }
 
 .email {
-	margin-left: 50%;
+	
 	
 }
+.username h3 {
+	margin-top:0px !important;
+	margin-bottom:0px !important;
+}
+
+
+.bio {
+	text-align: center;
+	padding-top:5px;
+	padding-bottom: 5px;
+	background-color: white;
+}
+
  /*========base=========*/
  footer
  {
