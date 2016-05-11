@@ -9,7 +9,7 @@ body {
 
 /*==============index================*/
 .accueil-fond {
- 	height: 100%;
+ 	height: 1200px;
 	background-image: url('../img/DOSETTE.png');
 	background-size: cover;	
 } 
