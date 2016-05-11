@@ -10,20 +10,30 @@
 			<input class="btn-style" type="submit" value="{{ 'Poster'|trans }}" />
 		</div>
 	</form>
-	<h2><br/>Posts Envoyés</h2> 
-		{% for onePost in tabpost %}
-			<div class="row">
-				<div class="col-md-4">
-					{{ onePost['idpost'] }}
+		<div class="row post-liste">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+			<h2><br/>Posts Envoyés</h2> 
+			{% for onePost in tabpost %}
+				<div class="accueil-post">
+					<div class="row post-infos">
+						<div class="col-md-1">
+							{{ onePost['idpost'] }}
+						</div>
+						<div class="col-md-8">
+						</div>
+						<div class="col-md-3">
+							{{ onePost['date'].date }}
+						</div>
+					</div>
+					<div class="row post-content">
+						<div class="col-md-12">
+							{{ onePost['content'] }}
+						</div>
+					</div>
 				</div>
-				<div class="col-md-4">
-					{{ onePost['date'].date }}
-				</div>
+			{% endfor %}
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					{{ onePost['content'] }}
-				</div>
-			</div>
-		{% endfor %}
+			<div class="col-md-3"></div>
+		</div>
 {% endblock %}
