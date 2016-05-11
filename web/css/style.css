@@ -86,7 +86,11 @@ margin-left: 20%;
 
 }
 /*===========accueil=============*/
-
+.titre-fil-actu
+{
+	text-align:center;
+	line-height: 0px;
+}
 .accueil-post
 {
 	margin-top:60px;
