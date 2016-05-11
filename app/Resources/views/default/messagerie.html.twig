@@ -23,7 +23,7 @@
 	<div class="trait"></div>
 	<div class="row post-liste">
 		<div class="col-md-1"></div>    
-        <div class="col-md-5">
+        <div class="col-md-4">
             <h2>Messages reçus</h2>
             
             {% for msg in messages_recus %}
@@ -33,13 +33,15 @@
 					    <div class="col-md-1">
 					    		#{{ msg[0]['id'] }}
 					    </div>
-					    <div class="col-md-8">
+					    <div class="col-md-5">
 					    	Expéditeur: 
 					    	<a href="{{ path("other_profil", {'id': msg[0]['idsend']}) }}">{{ msg[0]['sender_username'] }}</a>
 					    </div>
-					    <div class="col-md-2">{{ msg[0]['date'].date }}</div>
+					    <div class="col-md-5">{{ msg[0]['date'].date }}</div>
 					    <div class="col-md-1">
-					    	<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">X</a>
+					    	<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">
+					    		<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					    	</a>
 					    </div>
 					</div>
 					<div class="row">
@@ -53,7 +55,8 @@
 
         </div>
 
-        <div class="col-md-5">
+		<div class="col-md-2"></div>    
+        <div class="col-md-4">
             <h2>Messages envoyés</h2>
             
             {% for msg in messages_envoyes %}
@@ -61,14 +64,16 @@
 				<div class="col-md-12 accueil-post">
 					<div class="row post-infos">
 			    		<div class="col-md-1">#{{ msg[0]['id'] }}</div>
-					    <div class="col-md-8">
+					    <div class="col-md-5">
 					    	Destinataire: 
 					    	<a href="{{ path("other_profil", {'id': msg[0]['idreceive']}) }}">{{ msg[0]['receiver_username'] }}
 					    	</a>
 					    </div>
-					    <div class="col-md-2">{{ msg[0]['date'].date }}</div>
+					    <div class="col-md-5">{{ msg[0]['date'].date }}</div>
 						<div class="col-md-1">
-							<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">X</a>
+							<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">
+								<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</a>
 						</div>
 					</div>
 					<div class="row">
