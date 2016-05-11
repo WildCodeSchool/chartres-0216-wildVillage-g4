@@ -149,16 +149,23 @@ class UserController extends Controller
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findBy(array(), array('id'=>'desc'));
         $user = $this->getUser();
 
-        foreach ($posts as $post)
+        if (!empty($posts))
         {
-            $idAuteur = $em -> getRepository('AppBundle:User')->findOneById($post->getIdUser());
-            $tab[]= array(
-                    'idpost'=>$post->getId(),
-                    'iduser'=>$post->getIdUser(),
-                    'auteur'=>$idAuteur->getUsername(),
-                    'date'=>$post->getDate(),
-                    'content'=>$post->getContent(),
-                );
+            foreach ($posts as $post)
+            {
+                $idAuteur = $em -> getRepository('AppBundle:User')->findOneById($post->getIdUser());
+                $tab[]= array(
+                        'idpost'=>$post->getId(),
+                        'iduser'=>$post->getIdUser(),
+                        'auteur'=>$idAuteur->getUsername(),
+                        'date'=>$post->getDate(),
+                        'content'=>$post->getContent(),
+                    );
+            }
+        }
+        else
+        {
+            $tab=1;
         }
         return $this -> render('default/accueil.html.twig', array(
             'user' => $user,
