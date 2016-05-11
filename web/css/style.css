@@ -13,6 +13,7 @@ body {
 	background-color: rgba(255, 255,255, 0.8);
 	text-align: center;
 	margin-top: 20%;
+	border-radius: 100px !important; 
 }
 .accueil-fond {
  	height: 800px;
@@ -86,7 +87,11 @@ margin-left: 20%;
 
 }
 /*===========accueil=============*/
-
+.titre-fil-actu
+{
+	text-align:center;
+	line-height: 0px;
+}
 .accueil-post
 {
 	margin-top:60px;
@@ -175,9 +180,21 @@ margin-left: 20%;
 	margin-bottom:0px !important;
 }
 
+
 .bio {
 	text-align: center;
 	padding-top:5px;
 	padding-bottom: 5px;
 	background-color: white;
 }
+
+ /*========base=========*/
+ footer
+ {
+ 	bottom:0px;
+ 	width: 100%;
+ 	position: fixed;
+ 	text-align: center;
+ 	background-color:#66CCCC;
+ 	color: black;
+ }

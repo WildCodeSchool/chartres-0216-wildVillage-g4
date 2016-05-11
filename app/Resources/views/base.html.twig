@@ -38,6 +38,7 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a href="{{ path('user_accueil') }}">Fil d'actualités</a></li>
                                 <li><a href="{{ path('user_posts') }}">Mes Posts</a></li>
                                 <li><a href="{{ path('user_messagerie') }}">Messagerie</a></li>
                                 <li><a href="{{ path('user_profil') }}">Mon Profil</a></li>
@@ -59,6 +60,7 @@
         <div class="container-fluid">
             {% block body %}{% endblock %}
         </div>
+        <footer>site développé par Tony, Romain et Augustin</footer>
         {% block javascripts %}
             <script src="{{ asset('js/jquery-1.12.3.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>

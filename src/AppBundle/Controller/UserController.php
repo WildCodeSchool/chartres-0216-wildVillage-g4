@@ -235,7 +235,9 @@ class UserController extends Controller
             ->getRepository('AppBundle:Message');
 
 
-        $messages_recus = $repository->findByidReceive($user->getId());
+        // $messages_recus = $repository->findByidReceive($user->getId());
+        $messages_recus = $repository->findBy(array('idReceive'=>$user->getId()), array('id'=>'desc'));
+
 
         $tab_messages_recus = [];
         foreach ($messages_recus as $message) {
@@ -258,7 +260,8 @@ class UserController extends Controller
 
 
 
-        $messages_envoyes = $repository->findByidSend($user->getId());
+        // $messages_envoyes = $repository->findByidSend($user->getId());
+        $messages_envoyes = $repository->findBy(array('idSend'=>$user->getId()), array('id'=>'desc'));
 
         $tab_messages_envoyes = [];
         foreach ($messages_envoyes as $message) {
