@@ -1,32 +1,18 @@
-/*/*index*/
-body
-{
-	background-color: #ecf0f1;
+html {
+  height: 100%;
 }
 
-header
-{
-background-color: #e67e22;
-text-align:center;
-font-weight: bold;
-padding: 20px;
+body {
+  min-height: 100%;
 }
 
-header img {
-	width: 15%;
-	margin-left: -75%;
-}
-
-h1 { 
- font-family: "Courier New", Courier, "Liberation Mono", monospace;
-font-family: Monaco, "DejaVu Sans Mono", "Lucida Console", "Andale Mono", monospace;
- text-align: center; 
-}
 
 /*==============index================*/
-.cerf_index img {
-    margin-left: 40%;
-}
+.accueil-fond {
+ 	height: 100%;
+	background-image: url('../img/DOSETTE.png');
+	background-size: cover;	
+} 
 
 
 /*login_______________*/
