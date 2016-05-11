@@ -153,12 +153,16 @@ margin-left: 20%;
 	width: 50%;
 	margin-left: 25%;
 	text-align: left;
+	padding: 10px;
+	border-radius: 10px;
 }
 .prof {
 	background-color: #66CCCC;
 	width: 50%;
 	margin-left: 25%;
 	text-align: left;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 .register-but {
@@ -186,6 +190,12 @@ margin-left: 20%;
 	padding-top:5px;
 	padding-bottom: 5px;
 	background-color: white;
+}
+.btn-nouveau-post
+{
+	width: 100px;
+	margin: 0 auto;
+	margin-top: 10%;
 }
 
  /*========base=========*/

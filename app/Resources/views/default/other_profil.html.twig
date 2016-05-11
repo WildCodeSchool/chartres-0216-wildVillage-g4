@@ -1,14 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	{{ user.username }}
-	<br/>
-	{% if profil.mailIspublic==true %} {{ user.email }} {%else%}Adresse Email privée{% endif %}
-	<br/>
+	<div class="col-md-12 prof">
+		<div class="row">
+        	<div class="col-md-8 username">
+	<h3>{{ user.username }}</h3>
+	</div>
+	<div class="col-md-4 email">
+		{% if profil.mailIspublic==true %} {{ user.email }} {%else%}Adresse Email privée{% endif %}
+			</div>
+	</div>
 	{% if profil.firstnameIspublic==true %} {{datauser.firstname}} {%else%} Prénom privé{% endif %}
-	<br/>
 	{% if profil.surnameIspublic==true %} {{ datauser.surname }} {%else%} Nom privé{% endif %}
 	<br/>
 	{% if profil.ageIspublic==true %} {{ datauser.age }} {%else%} Age privé{% endif %}
 	<br/>
+	Biographie: 
+	<br/>
+		<div class="bio">
 	{% if profil.bioIspublic==true %} {{ profil.bio }} {%else%} Biographie privée {% endif %}
+		</div>
+		<br/>
+	</div>
 {% endblock %}
