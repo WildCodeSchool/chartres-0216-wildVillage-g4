@@ -22,31 +22,31 @@
 				   	<label for="firstname">Prénom :</label>
 					<input type="string" name="firstname" id="firstname" {% if datauser.firstname is defined %} value="{{datauser.firstname}}" {% endif %} />
 					<label for="firstnameispublic">Rendre public</label>
-					<input type="checkbox" { {%if firstnameIspublic is defined %}{%if profil.firstnameIspublic==true %} checked {%endif%}{%endif%}} name="firstnameispublic" id="firstnameispublic"/>
+					<input type="checkbox" { {% if profil.firstnameIspublic is defined %}{% if profil.firstnameIspublic==true %} checked {% endif %}{% endif %}} name="firstnameispublic" id="firstnameispublic"/>
 				</div>
 			    <div>
 				   	<label for="surname">Nom :</label>
 					<input type="string" name="surname" id="surname" {% if datauser.surname is defined %} value="{{datauser.surname}}" {% endif %}/>
 					<label for="surnameispublic">Rendre public</label>
-					<input type="checkbox" { {%if surnameIspublic is defined %}{%if profil.surnameIspublic==true %} checked {%endif%}{%endif%}} name="surnameispublic" id="surnameispublic"/>
+					<input type="checkbox" { {% if profil.surnameIspublic is defined %}{% if profil.surnameIspublic==true %} checked {% endif %}{% endif %}} name="surnameispublic" id="surnameispublic"/>
 				</div>
 				<div>
 				   	<label for="email">Email :</label>
 					<input type="string" name="email" id="email" {% if user.email is defined %} value="{{user.email}}" {% endif %}/>
 					<label for="mailispublic">Rendre public</label>
-					<input type="checkbox" { {%if mailIspublic is defined %}{%if profil.mailIspublic==true %} checked {%endif%}{%endif%}} name="mailispublic" id="mailispublic"/>
+					<input type="checkbox" { {% if profil.mailIspublic is defined %}{% if profil.mailIspublic==true %} checked {% endif %}{% endif %}} name="mailispublic" id="mailispublic"/>
 				</div>
 				 <div>
 				   	<label for="age">Age :</label>
 					<input type="string" name="age" id="age" {% if datauser.age is defined %} value="{{datauser.age}}" {% endif %}/>
 					<label for="ageispublic">Rendre public</label>
-					<input type="checkbox" { {%if ageIspublic is defined %}{%if profil.ageIspublic==true %} checked {%endif%}{%endif%}} name="ageispublic" id="ageispublic"/>
+					<input type="checkbox" { {% if profil.ageIspublic is defined %}{% if profil.ageIspublic==true %} checked {% endif %}{% endif %}} name="ageispublic" id="ageispublic"/>
 				</div>
 				<div>
 				   	<label for="bio">Votre biographie :</label>
 					<textarea name="bio" placeholder="décrivez votre parcours" id="bio">{% if profil.bio is defined %} {{profil.bio}} {% endif %}</textarea>
 					<label for="bioispublic">Rendre public</label>
-					<input type="checkbox" { {%if bioIspublic is defined %}{%if profil.bioIspublic==true %} checked {%endif%}{%endif%}} name="bioispublic" id="bioispublic"/>
+					<input type="checkbox" { {% if profil.bioIspublic is defined %}{% if profil.bioIspublic==true %} checked {% endif %}{% endif %}} name="bioispublic" id="bioispublic"/>
 				</div>
 				<div class="register-but">
 			        <input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
