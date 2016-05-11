@@ -5,13 +5,13 @@
         <div class="col-md-4">
         	<h2>Créer un message</h2>
             <form action="{{ path("message_check") }}" method="post">
-                <div>
-                       Destinataire:
-                    <input type="string" name="receive" />
+                <div class="form-group">
+                    <label for="">Destinataire:</label>
+                    <input type="string" id="receive" name="receive" class="form-control" />
                 </div>
-                <div>
-                       Ecrivez votre message :
-                    <textarea name="content"></textarea>
+                <div class="form-group">
+                    <label for="content">Écrivez votre message:</label>
+                    <textarea id="content" name="content" class="form-control"></textarea>
                 </div>
                 <div class="col-md-12 btn-post">
                     <input class="btn tn-info" type="submit" value="{{ 'Valider'|trans }}" />
