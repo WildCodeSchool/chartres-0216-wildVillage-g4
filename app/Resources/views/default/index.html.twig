@@ -4,9 +4,16 @@
 
 
 {% block body %}
-  <h1> Welcome to the Wild Village ! </h1>
-  <div class="cerf_index">
-  <img src="{{ asset('img/cerf.png') }}"/>
-  </div>
-  
+<div class="accueil-fond">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="jumbotron">
+		  <h1>Le Wild Village</h1>
+		  <p>Le meilleur réseau social dédié aux codeurs en chausettes... amateurs de dosettes! :-)</p>
+		  <!--p>
+		  	<a class="btn btn-default btn-lg" href="{{ path('user_login') }}" role="button">Se connecter</a>
+		  	<a class="btn btn-warning btn-lg" href="{{ path('user_register') }}" role="button">S'inscrire</a>
+		  </p-->
+		</div>
+	</div>
+<div>
 {% endblock %}

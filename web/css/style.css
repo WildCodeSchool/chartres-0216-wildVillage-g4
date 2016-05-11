@@ -1,32 +1,26 @@
-/*/*index*/
-body
-{
-	background-color: #ecf0f1;
+html {
+  height: 100%;
 }
 
-header
-{
-background-color: #e67e22;
-text-align:center;
-font-weight: bold;
-padding: 20px;
+body {
+  min-height: 100%;
 }
 
-header img {
-	width: 15%;
-	margin-left: -75%;
-}
-
-h1 { 
- font-family: "Courier New", Courier, "Liberation Mono", monospace;
-font-family: Monaco, "DejaVu Sans Mono", "Lucida Console", "Andale Mono", monospace;
- text-align: center; 
-}
 
 /*==============index================*/
-.cerf_index img {
-    margin-left: 40%;
+.jumbotron
+{
+	background-color: rgba(255, 255,255, 0.8);
+	text-align: center;
+	margin-top: 20%;
 }
+.accueil-fond {
+ 	height: 800px;
+	background-image: url('../img/dosettes2.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: fixed;	
+} 
 
 
 /*login_______________*/
@@ -65,7 +59,7 @@ font-family: Monaco, "DejaVu Sans Mono", "Lucida Console", "Andale Mono", monosp
 /*=====================================*/
 .wcs img {
 width: 50%;
-margin-left: 25%;
+margin: 0 auto;
 }
 
 .btn-register
@@ -76,6 +70,12 @@ margin-left: 25%;
 .register-form
 {
 	margin-top: 5px;
+}
+.trait
+{
+	margin-top: 30px;
+	height: 5px;
+	background-color: #66CCCC;
 }
 /*==========register=============*/
 
@@ -109,8 +109,6 @@ margin-left: 20%;
 	background-color: #65AED6;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-	margin-left:0px !important;
-	margin-right:0px !important;
 }
 .post-content
 {
@@ -122,9 +120,26 @@ margin-left: 20%;
 .post-liste h2
 {
 	text-align: center;
+	line-height: 10px;
 }
-
-
+.form-post
+{
+	margin:0 auto;
+}
+.input-text
+{
+	min-width: 100%;
+	min-height: 100px;
+}
+.btn-post
+{
+	margin-left: 80%;
+}
+.infos-post
+{
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
 /*===========profil=============*/
 
 .formulaire{
