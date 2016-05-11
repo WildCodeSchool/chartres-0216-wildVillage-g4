@@ -1,37 +1,49 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+    	<div class="col-md-4"></div>
+        <div class="col-md-4">
+        	<h2>Créer un message</h2>
             <form action="{{ path("message_check") }}" method="post">
                 <div>
-                       Destinataire :
+                       Destinataire:
                     <input type="string" name="receive" />
                 </div>
                 <div>
-                       Texte :
+                       Ecrivez votre message :
                     <textarea name="content"></textarea>
                 </div>
-                <div class="col-md-12">
-                    <input class="btn-style" type="submit" value="{{ 'Valider'|trans }}" />
+                <div class="col-md-12 btn-post">
+                    <input class="btn tn-info" type="submit" value="{{ 'Valider'|trans }}" />
                 </div>
             </form>
         </div>
+    	<div class="col-md-4"></div>
     </div>            
-    <div class="row">
-        <div class="col-md-6">
+	<div class="trait"></div>
+	<div class="row post-liste">
+		<div class="col-md-1"></div>    
+        <div class="col-md-5">
             <h2>Messages reçus</h2>
             
             {% for msg in messages_recus %}
             <div class="row">
-        		<div class="col-md-12 message">
-					<div class="row">
-					    <div class="col-md-2">#{{ msg[0]['id'] }}</div>
-					    <div class="col-md-4">Expéditeur: <a href="{{ path("other_profil", {'id': msg[0]['idsend']}) }}">{{ msg[0]['sender_username'] }}</a></div>
-					    <div class="col-md-4 text-right">{{ msg[0]['date'].date }}</div>
-					    <div class="col-md-2 text-right"><a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">Supprimer</a></div>
+        		<div class="col-md-12 accueil-post">
+					<div class="row post-infos">
+					    <div class="col-md-1">
+					    		#{{ msg[0]['id'] }}
+					    </div>
+					    <div class="col-md-8">
+					    	Expéditeur: 
+					    	<a href="{{ path("other_profil", {'id': msg[0]['idsend']}) }}">{{ msg[0]['sender_username'] }}</a>
+					    </div>
+					    <div class="col-md-2">{{ msg[0]['date'].date }}</div>
+					    <div class="col-md-1">
+					    	<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">X</a>
+					    </div>
 					</div>
 					<div class="row">
-					    <p class="col-md-12">
+					    <p class="col-md-12 post-content">
 					        {{ msg[0]['content'] }}
 					    </p>
 					</div>
@@ -41,23 +53,34 @@
 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-5">
             <h2>Messages envoyés</h2>
             
             {% for msg in messages_envoyes %}
 			<div class="row">
-			    <div class="col-md-2">#{{ msg[0]['id'] }}</div>
-			    <div class="col-md-4">Destinataire: <a href="{{ path("other_profil", {'id': msg[0]['idreceive']}) }}">{{ msg[0]['receiver_username'] }}</a></div>
-			    <div class="col-md-4 text-right">{{ msg[0]['date'].date }}</div>
-				<div class="col-md-2 text-right"><a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">Supprimer</a></div>
-			</div>
-			<div class="row">
-			    <p class="col-md-12">
-			        {{ msg[0]['content'] }}
-			    </p>
+				<div class="col-md-12 accueil-post">
+					<div class="row post-infos">
+			    		<div class="col-md-1">#{{ msg[0]['id'] }}</div>
+					    <div class="col-md-8">
+					    	Destinataire: 
+					    	<a href="{{ path("other_profil", {'id': msg[0]['idreceive']}) }}">{{ msg[0]['receiver_username'] }}
+					    	</a>
+					    </div>
+					    <div class="col-md-2">{{ msg[0]['date'].date }}</div>
+						<div class="col-md-1">
+							<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">X</a>
+						</div>
+					</div>
+					<div class="row">
+					    <p class="col-md-12 post-content">
+					        {{ msg[0]['content'] }}
+					    </p>
+					</div>
+				</div>
 			</div>
             {% endfor %}
 
         </div>
+		<div class="col-md-1"></div>    
     </div>
 {% endblock %}
