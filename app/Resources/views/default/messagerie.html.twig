@@ -39,8 +39,11 @@
 					    </div>
 					    <div class="col-md-5">{{ msg[0]['date'].date }}</div>
 					    <div class="col-md-1">
+
 					    	<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">
-					    		<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					    		<button type="button" class="close" aria-label="Close">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</button>
 					    	</a>
 					    </div>
 					</div>
@@ -72,7 +75,9 @@
 					    <div class="col-md-5">{{ msg[0]['date'].date }}</div>
 						<div class="col-md-1">
 							<a href="{{ path('message_delete', {'id': msg[0]['id']}) }}">
-								<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<button type="button" class="close" aria-label="Close">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</button>
 							</a>
 						</div>
 					</div>

@@ -36,7 +36,7 @@ body {
 	margin-top: 5px;
 }
 /*=============style bouton par default==============*/
-	.btn-style{
+.btn-style{
     border : solid 1px #066ccc;
     border-radius : 3px;
     moz-border-radius : 3px;
@@ -54,13 +54,13 @@ body {
     background : -ms-linear-gradient(top, #066ccc 0%, #14d8ff 100%);
     background : linear-gradient(top, #066ccc 0%, #14d8ff 100%);
     filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#066ccc', endColorstr='#14d8ff',GradientType=0 );
-}
+
 }
 
 /*=====================================*/
 .wcs img {
-width: 50%;
-margin: 0 auto;
+	width: 50%;
+	margin: 0 auto;
 }
 
 .btn-register

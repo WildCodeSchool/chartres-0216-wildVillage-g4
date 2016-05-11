@@ -12,46 +12,41 @@
     	</div>
 	{% endif %}
 
-		<div class="row">
-			<div class="col-md-12">
-			
-			</div>
-		</div>
 		<div class="row login">
 			<div class="col-md-12 wcs">
-					<a href="./">
-          				<img src="{{ asset('img/WCS.png') }}"/>
-		     			</a>
-				<form action="{{ path("fos_user_security_check") }}" method="post">
+				<div class="row">					
+					<a href="./"><img src="{{ asset('img/WCS.png') }}"/></a>
+					<form action="{{ path("fos_user_security_check") }}" method="post">
 
-					<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-					<div class="row">
-						<div class="col-md-12 text-center login-form">
-							<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" />
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+						<div class="row">
+							<div class="col-md-12 text-center login-form">
+								<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" />
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 text-center login-form">
-							<input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}"  />
+						<div class="row">
+							<div class="col-md-12 text-center login-form">
+								<input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}"  />
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-							<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+								<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<input class="btn btn-info" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<input class="btn btn-info" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<p>Pas encore de compte? <a href="{{path('user_register')}}">S'enregistrer</a></p>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p>Pas encore de compte? <a href="{{path('user_register')}}">S'enregistrer</a></p>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
