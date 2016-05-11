@@ -11,19 +11,19 @@
 		</div>
 	</form>
 	<h2><br/>Posts Envoyés</h2> 
-	{% for onePost in tabpost %}
-		<div class="row">
-			<div class="col-md-4">
-				{{ onePost['idpost'] }}
+		{% for onePost in tabpost %}
+			<div class="row">
+				<div class="col-md-4">
+					{{ onePost['idpost'] }}
+				</div>
+				<div class="col-md-4">
+					{{ onePost['date'].date }}
+				</div>
 			</div>
-			<div class="col-md-4">
-				{{ onePost['date'].date }}
+			<div class="row">
+				<div class="col-md-12">
+					{{ onePost['content'] }}
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				{{ onePost['content'] }}
-			</div>
-		</div>
-	{% endfor %}
+		{% endfor %}
 {% endblock %}
