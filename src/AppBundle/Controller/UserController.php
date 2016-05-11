@@ -145,7 +145,8 @@ class UserController extends Controller
     public function showAllPostsAction (Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+        // $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findBy(array(), array('id'=>'desc'));
         $user = $this->getUser();
 
         foreach ($posts as $post)
