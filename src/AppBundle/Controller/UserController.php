@@ -33,7 +33,7 @@ class UserController extends Controller
             ->getRepository('AppBundle:Datauser');
         $datauser = $repository->findOneById_user($userid);
         $profil = $em->getRepository('AppBundle:Profil_user')->findOneById_user($user->getId());
-        
+
         return $this->render('default/profil.html.twig', array(
             'user'=>$user,
             'datauser'=>$datauser,
